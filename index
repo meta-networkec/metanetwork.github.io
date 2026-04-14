@@ -1,1 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>METANETWORK — Carrier Tecnológico</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0a1628;--bg2:#0d1f3c;--bg3:#112244;
+  --border:rgba(100,160,255,0.15);
+  --accent:#4a9eff;--accent2:#7bb8ff;
+  --text:#c8d8f0;--text2:#8aaad0;--text3:#5a7a9a;
+  --card:rgba(15,35,70,0.8);--glow:rgba(74,158,255,0.08);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;
+  background-image:linear-gradient(rgba(74,158,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,158,255,0.04) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;}
 
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 60px;background:rgba(10,22,40,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;color:var(--text2);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:#fff;}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.lang-toggle{display:flex;background:rgba(74,158,255,0.1);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.lang-btn{font-size:11px;font-weight:700;letter-spacing:1px;padding:6px 14px;cursor:pointer;border:none;background:transparent;color:var(--text2);transition:all .2s;}
+.lang-btn.active{background:var(--accent);color:#fff;}
+.nav-cta{font-size:11px;font-weight:700;letter-spacing:1.5px;color:#fff;background:var(--accent);padding:9px 20px;border-radius:6px;text-decoration:none;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+.nav-dropdown{position:relative;}
+.nav-dropdown-toggle{display:flex;align-items:center;gap:4px;cursor:pointer;}
+.dropdown-menu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:rgba(10,22,40,0.98);border:1px solid var(--border);border-radius:8px;min-width:280px;padding:8px 0;z-index:200;backdrop-filter:blur(16px);}
+.dropdown-menu li{list-style:none;}
+.dropdown-menu li a{display:block;padding:10px 18px;font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--text2);text-decoration:none;transition:color .2s,background .2s;white-space:nowrap;}
+.dropdown-menu li a:hover{color:#fff;background:rgba(74,158,255,0.1);}
+.dropdown-menu li:not(:last-child){border-bottom:1px solid var(--border);}
+.nav-dropdown:hover .dropdown-menu{display:block;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 60px 80px;position:relative;overflow:hidden;}
+.hero-tag{font-size:11px;font-weight:600;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.hero-tag::before{content:'';display:inline-block;width:32px;height:1px;background:var(--accent);}
+.hero h1{font-size:clamp(36px,5.5vw,76px);font-weight:800;line-height:1.05;letter-spacing:-2px;max-width:800px;margin-bottom:28px;color:#fff;}
+.hero h1 em{color:var(--accent);font-style:normal;}
+.hero-sub{font-size:16px;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:48px;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:opacity .2s;letter-spacing:.5px;}
+.btn-primary:hover{opacity:.85;}
+.btn-ghost{color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:8px;border:1px solid var(--border);padding:13px 24px;border-radius:6px;transition:border-color .2s;}
+.btn-ghost:hover{border-color:var(--accent);}
+.btn-ghost::after{content:'→';}
+.hero-stats{display:flex;gap:48px;margin-top:72px;padding-top:40px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.stat-num{font-size:34px;font-weight:800;letter-spacing:-1px;color:#fff;}
+.stat-lbl{font-size:11px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;}
+
+/* HERO LOGO SHOWCASE */
+.hero-logo-block{margin-bottom:40px;display:flex;align-items:center;gap:20px;}
+
+/* SECTIONS */
+.section{padding:100px 60px;border-top:1px solid var(--border);position:relative;}
+.sec-tag{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.sec-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent);}
+.section h2{font-size:clamp(26px,3.5vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:16px;color:#fff;}
+.section-sub{font-size:15px;color:var(--text2);max-width:580px;line-height:1.75;margin-bottom:60px;}
+
+/* LOGO SHOWCASE SECTION */
+.logo-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+.logo-swatch{border:1px solid var(--border);border-radius:12px;padding:36px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;background:var(--card);}
+.logo-swatch-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--text3);text-transform:uppercase;}
+.swatch-dark{background:#0a1628;}
+.swatch-mid{background:#0d1f3c;}
+.swatch-light{background:#f0f4fa;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.service-card{background:var(--card);padding:36px 28px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .2s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;inset:0;background:var(--glow);opacity:0;transition:opacity .3s;}
+.service-card:hover::before{opacity:1;}
+.service-icon{width:44px;height:44px;border-radius:10px;background:rgba(74,158,255,0.1);border:1px solid rgba(74,158,255,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.service-card h3{font-size:15px;font-weight:700;margin-bottom:10px;color:#fff;}
+.service-card p{font-size:13px;color:var(--text2);line-height:1.65;}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px;}
+.pillar-list{display:flex;flex-direction:column;gap:16px;}
+.pillar{display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:border-color .2s;}
+.pillar:hover{border-color:rgba(74,158,255,0.4);}
+.pillar-num{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1px;min-width:26px;margin-top:2px;}
+.pillar h4{font-size:14px;font-weight:700;margin-bottom:5px;color:#fff;}
+.pillar p{font-size:13px;color:var(--text2);line-height:1.6;}
+
+/* PUBLICATIONS */
+.pub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px;}
+.pub-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s;}
+.pub-card:hover{border-color:rgba(74,158,255,0.4);}
+.pub-source{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;}
+.pub-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
+.pub-desc{font-size:13px;color:var(--text2);line-height:1.7;flex:1;}
+.pub-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(74,158,255,0.1);color:var(--accent);border:1px solid rgba(74,158,255,0.2);border-radius:4px;padding:3px 10px;}
+.pub-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent);text-decoration:none;letter-spacing:.5px;margin-top:4px;}
+.pub-link::after{content:'→';}
+.pub-link:hover{opacity:.75;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px;}
+.ct-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:5px;}
+.ct-val{font-size:14px;color:var(--text);margin-bottom:20px;}
+.ct-val a{color:var(--text);text-decoration:none;}
+.ct-val a:hover{color:var(--accent);}
+.ct-val a.wa{color:#25D366;}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0;}
+.faq-q{font-size:14px;font-weight:600;color:#fff;margin-bottom:7px;}
+.faq-a{font-size:13px;color:var(--text2);line-height:1.6;}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:36px;}
+.contact-form h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:7px;}
+.form-group input,.form-group textarea{width:100%;background:rgba(10,22,40,0.8);border:1px solid var(--border);border-radius:6px;padding:11px 15px;font-size:14px;color:#fff;outline:none;font-family:inherit;transition:border-color .2s;}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.form-submit{width:100%;background:var(--accent);color:#fff;padding:13px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:.5px;border:none;cursor:pointer;transition:opacity .2s;margin-top:6px;}
+.form-submit:hover{opacity:.85;}
+
+footer{padding:36px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;position:relative;}
+.footer-copy{font-size:12px;color:var(--text3);}
+.footer-copy a{color:var(--accent);text-decoration:none;}
+
+@media(max-width:900px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hero,.section{padding-left:24px;padding-right:24px;}
+  .hero h1{font-size:34px;}
+  .hero-stats{gap:28px;}
+  .services-grid,.pub-grid,.logo-showcase{grid-template-columns:1fr;}
+  .why-grid,.contact-grid{grid-template-columns:1fr;}
+  footer{padding:24px 20px;flex-direction:column;text-align:center;}
+}
+[data-lang]{display:none;}
+[data-lang].active{display:block;}
+span[data-lang]{display:none;}
+span[data-lang].active{display:inline;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LOGO SVG — DEFINICIÓN REUTILIZABLE
+     Icono: nodo hexagonal con red de conexiones
+     Wordmark: METANETWORK espaciado geométrico
+════════════════════════════════════════════ -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- LOGO COMPLETO (icono + wordmark) — versión blanca sobre oscuro -->
+    <symbol id="logo-full-white" viewBox="0 0 280 48">
+      <!-- Icono: hexágono + nodos de red -->
+      <g>
+        <!-- Hexágono base relleno azul -->
+        <polygon points="24,4 40,13 40,31 24,40 8,31 8,13" fill="#1a3a6e" stroke="#4a9eff" stroke-width="1.2"/>
+        <!-- Nodos periféricos -->
+        <circle cx="24" cy="4"  r="2.2" fill="#4a9eff"/>
+        <circle cx="40" cy="13" r="2.2" fill="#4a9eff"/>
+        <circle cx="40" cy="31" r="2.2" fill="#4a9eff"/>
+        <circle cx="24" cy="40" r="2.2" fill="#4a9eff"/>
+        <circle cx="8"  cy="31" r="2.2" fill="#4a9eff"/>
+        <circle cx="8"  cy="13" r="2.2" fill="#4a9eff"/>
+        <!-- Nodo central -->
+        <circle cx="24" cy="22" r="3.5" fill="#4a9eff"/>
+        <!-- Líneas de conexión del centro a nodos -->
+        <line x1="24" y1="22" x2="24" y2="4"  stroke="#7bb8ff" stroke-width="0.9" opacity="0.9"/>
+        <line x1="24" y1="22" x2="40" y2="13" stroke="#7bb8ff" stroke-width="0.9" opacity="0.9"/>
+        <line x1="24" y1="22" x2="40" y2="31" stroke="#7bb8ff" stroke-width="0.9" opacity="0.9"/>
+        <line x1="24" y1="22" x2="24" y2="40" stroke="#7bb8ff" stroke-width="0.9" opacity="0.9"/>
+        <line x1="24" y1="22" x2="8"  y2="31" stroke="#7bb8ff" stroke-width="0.9" opacity="0.9"/>
+        <line x1="24" y1="22" x2="8"  y2="13" stroke="#7bb8ff" stroke-width="0.9" opacity="0.9"/>
+        <!-- Conexiones cruzadas (red) -->
+        <line x1="24" y1="4"  x2="40" y2="31" stroke="#4a9eff" stroke-width="0.5" opacity="0.35"/>
+        <line x1="40" y1="13" x2="8"  y2="31" stroke="#4a9eff" stroke-width="0.5" opacity="0.35"/>
+        <line x1="8"  y1="13" x2="40" y2="31" stroke="#4a9eff" stroke-width="0.5" opacity="0.35"/>
+      </g>
+      <!-- Wordmark -->
+      <text x="54" y="27" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="4" fill="#ffffff">META</text>
+      <text x="54" y="27" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="4" fill="#ffffff">
+        <tspan fill="#ffffff">META</tspan><tspan fill="#4a9eff">NETWORK</tspan>
+      </text>
+      <!-- Tagline bajo wordmark -->
+      <text x="55" y="39" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" font-weight="600" letter-spacing="3" fill="#5a7a9a">CARRIER TECNOLÓGICO</text>
+    </symbol>
+
+    <!-- LOGO SOLO ICONO (para favicon / versión compacta) -->
+    <symbol id="logo-icon-only" viewBox="0 0 48 48">
+      <polygon points="24,4 40,13 40,35 24,44 8,35 8,13" fill="#1a3a6e" stroke="#4a9eff" stroke-width="1.5"/>
+      <circle cx="24" cy="4"  r="2.5" fill="#4a9eff"/>
+      <circle cx="40" cy="13" r="2.5" fill="#4a9eff"/>
+      <circle cx="40" cy="35" r="2.5" fill="#4a9eff"/>
+      <circle cx="24" cy="44" r="2.5" fill="#4a9eff"/>
+      <circle cx="8"  cy="35" r="2.5" fill="#4a9eff"/>
+      <circle cx="8"  cy="13" r="2.5" fill="#4a9eff"/>
+      <circle cx="24" cy="24" r="4"   fill="#4a9eff"/>
+      <line x1="24" y1="24" x2="24" y2="4"  stroke="#7bb8ff" stroke-width="1.1"/>
+      <line x1="24" y1="24" x2="40" y2="13" stroke="#7bb8ff" stroke-width="1.1"/>
+      <line x1="24" y1="24" x2="40" y2="35" stroke="#7bb8ff" stroke-width="1.1"/>
+      <line x1="24" y1="24" x2="24" y2="44" stroke="#7bb8ff" stroke-width="1.1"/>
+      <line x1="24" y1="24" x2="8"  y2="35" stroke="#7bb8ff" stroke-width="1.1"/>
+      <line x1="24" y1="24" x2="8"  y2="13" stroke="#7bb8ff" stroke-width="1.1"/>
+      <line x1="24" y1="4"  x2="40" y2="35" stroke="#4a9eff" stroke-width="0.6" opacity="0.4"/>
+      <line x1="40" y1="13" x2="8"  y2="35" stroke="#4a9eff" stroke-width="0.6" opacity="0.4"/>
+      <line x1="8"  y1="13" x2="40" y2="35" stroke="#4a9eff" stroke-width="0.6" opacity="0.4"/>
+    </symbol>
+
+    <!-- LOGO WORDMARK VERSIÓN OSCURO (para fondo blanco) -->
+    <symbol id="logo-full-dark" viewBox="0 0 280 48">
+      <g>
+        <polygon points="24,4 40,13 40,31 24,40 8,31 8,13" fill="#d0e4f8" stroke="#185FA5" stroke-width="1.2"/>
+        <circle cx="24" cy="4"  r="2.2" fill="#185FA5"/>
+        <circle cx="40" cy="13" r="2.2" fill="#185FA5"/>
+        <circle cx="40" cy="31" r="2.2" fill="#185FA5"/>
+        <circle cx="24" cy="40" r="2.2" fill="#185FA5"/>
+        <circle cx="8"  cy="31" r="2.2" fill="#185FA5"/>
+        <circle cx="8"  cy="13" r="2.2" fill="#185FA5"/>
+        <circle cx="24" cy="22" r="3.5" fill="#185FA5"/>
+        <line x1="24" y1="22" x2="24" y2="4"  stroke="#0C447C" stroke-width="0.9"/>
+        <line x1="24" y1="22" x2="40" y2="13" stroke="#0C447C" stroke-width="0.9"/>
+        <line x1="24" y1="22" x2="40" y2="31" stroke="#0C447C" stroke-width="0.9"/>
+        <line x1="24" y1="22" x2="24" y2="40" stroke="#0C447C" stroke-width="0.9"/>
+        <line x1="24" y1="22" x2="8"  y2="31" stroke="#0C447C" stroke-width="0.9"/>
+        <line x1="24" y1="22" x2="8"  y2="13" stroke="#0C447C" stroke-width="0.9"/>
+      </g>
+      <text x="54" y="27" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="4">
+        <tspan fill="#042C53">META</tspan><tspan fill="#185FA5">NETWORK</tspan>
+      </text>
+      <text x="55" y="39" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" font-weight="600" letter-spacing="3" fill="#8aaad0">CARRIER TECNOLÓGICO</text>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ═══ TECH ILLUSTRATION BG ═══ -->
+<svg style="position:fixed;right:0;top:0;width:55vw;max-width:900px;height:100vh;opacity:0.06;pointer-events:none;z-index:0;" viewBox="0 0 800 800">
+  <circle cx="400" cy="400" r="300" fill="none" stroke="#4a9eff" stroke-width="1"/>
+  <circle cx="400" cy="400" r="220" fill="none" stroke="#4a9eff" stroke-width="0.5"/>
+  <circle cx="400" cy="400" r="140" fill="none" stroke="#4a9eff" stroke-width="1"/>
+  <circle cx="400" cy="400" r="60"  fill="none" stroke="#4a9eff" stroke-width="1.5"/>
+  <line x1="100" y1="400" x2="700" y2="400" stroke="#4a9eff" stroke-width="0.5"/>
+  <line x1="400" y1="100" x2="400" y2="700" stroke="#4a9eff" stroke-width="0.5"/>
+  <line x1="188" y1="188" x2="612" y2="612" stroke="#4a9eff" stroke-width="0.5"/>
+  <line x1="612" y1="188" x2="188" y2="612" stroke="#4a9eff" stroke-width="0.5"/>
+  <circle cx="400" cy="100" r="6" fill="#4a9eff"/>
+  <circle cx="400" cy="700" r="6" fill="#4a9eff"/>
+  <circle cx="100" cy="400" r="6" fill="#4a9eff"/>
+  <circle cx="700" cy="400" r="6" fill="#4a9eff"/>
+  <circle cx="188" cy="188" r="5" fill="#4a9eff"/>
+  <circle cx="612" cy="188" r="5" fill="#4a9eff"/>
+  <circle cx="188" cy="612" r="5" fill="#4a9eff"/>
+  <circle cx="612" cy="612" r="5" fill="#4a9eff"/>
+  <circle cx="400" cy="180" r="4" fill="#4a9eff"/>
+  <circle cx="580" cy="280" r="4" fill="#4a9eff"/>
+  <circle cx="580" cy="520" r="4" fill="#4a9eff"/>
+  <circle cx="400" cy="620" r="4" fill="#4a9eff"/>
+  <circle cx="220" cy="520" r="4" fill="#4a9eff"/>
+  <circle cx="220" cy="280" r="4" fill="#4a9eff"/>
+  <polygon points="400,180 580,280 580,520 400,620 220,520 220,280" fill="none" stroke="#4a9eff" stroke-width="0.7"/>
+</svg>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a class="nav-logo" href="#">
+    <svg width="220" height="40"><use href="#logo-full-white"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios"><span data-lang="es" class="active">SERVICIOS</span><span data-lang="en">SERVICES</span></a></li>
+    <li><a href="#nosotros"><span data-lang="es" class="active">NOSOTROS</span><span data-lang="en">ABOUT</span></a></li>
+    <li><a href="#publicaciones"><span data-lang="es" class="active">PUBLICACIONES</span><span data-lang="en">INSIGHTS</span></a></li>
+    <li><a href="https://www.arcotel.gob.ec/estadisticas-de-telecomunicaciones2/" target="_blank" rel="noopener"><span data-lang="es" class="active">ESTADÍSTICAS</span><span data-lang="en">STATISTICS</span></a></li>
+    <li class="nav-dropdown">
+      <a href="#" onclick="return false;" class="nav-dropdown-toggle"><span data-lang="es" class="active">REGULACIONES</span><span data-lang="en">REGULATIONS</span> ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="http://www.arcotel.gob.ec/" target="_blank" rel="noopener">ARCOTEL</a></li>
+        <li><a href="http://www.telecomunicaciones.gob.ec/" target="_blank" rel="noopener">MINTEL</a></li>
+        <li><a href="https://www.gob.ec/sites/default/files/regulations/2018-10/Resolucion-ARCOTEL-2018-0716-condiciones%20generales%20adhesi%C3%B3n.pdf" target="_blank" rel="noopener"><span data-lang="es" class="active">Norma Técnica — Contratos de Adhesión</span><span data-lang="en">Technical Standard — Adhesion Contracts</span></a></li>
+        <li><a href="https://www.arcotel.gob.ec/wp-content/uploads/2016/06/reglamento-para-los-abonados-clientes-sva.pdf" target="_blank" rel="noopener"><span data-lang="es" class="active">Reglamento de Abonados</span><span data-lang="en">Subscriber Regulations</span></a></li>
+      </ul>
+    </li>
+    <li><a href="#contacto"><span data-lang="es" class="active">CONTACTO</span><span data-lang="en">CONTACT</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a class="nav-cta" href="mailto:financiero@lpzlaw.com"><span data-lang="es" class="active">CONTÁCTANOS</span><span data-lang="en">CONTACT US</span></a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <!-- Logo grande en hero -->
+  <div class="hero-logo-block">
+    <svg width="340" height="60" style="opacity:0.92"><use href="#logo-full-white"/></svg>
+  </div>
+  <div class="hero-tag"><span data-lang="es" class="active">Carrier Tecnológico · Continente Americano</span><span data-lang="en">Technology Carrier · The Americas</span></div>
+  <h1>
+    <span data-lang="es" class="active">Conectamos las <em>Américas</em> con infraestructura de clase mundial.</span>
+    <span data-lang="en">Connecting the <em>Americas</em> with world-class infrastructure.</span>
+  </h1>
+  <p class="hero-sub">
+    <span data-lang="es" class="active">Proveemos servicios de internet, telecomunicaciones, ciberseguridad y asesoría especializada para operadoras en todo el continente americano. Base en Guayaquil, Ecuador.</span>
+    <span data-lang="en">We provide internet, telecommunications, cybersecurity and advisory services for carriers across the Americas. Headquartered in Guayaquil, Ecuador.</span>
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#servicios"><span data-lang="es" class="active">Ver servicios</span><span data-lang="en">Our services</span></a>
+    <a class="btn-ghost" href="mailto:financiero@lpzlaw.com"><span data-lang="es" class="active">Hablar con un especialista</span><span data-lang="en">Talk to a specialist</span></a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">35+</div><div class="stat-lbl"><span data-lang="es" class="active">Países cubiertos</span><span data-lang="en">Countries covered</span></div></div>
+    <div><div class="stat-num">99.9%</div><div class="stat-lbl"><span data-lang="es" class="active">Uptime garantizado</span><span data-lang="en">Guaranteed uptime</span></div></div>
+    <div><div class="stat-num">24/7</div><div class="stat-lbl"><span data-lang="es" class="active">Soporte técnico</span><span data-lang="en">Technical support</span></div></div>
+    <div><div class="stat-num">4</div><div class="stat-lbl"><span data-lang="es" class="active">Regiones activas</span><span data-lang="en">Active regions</span></div></div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="section" id="servicios">
+  <div class="sec-tag"><span data-lang="es" class="active">Servicios</span><span data-lang="en">Services</span></div>
+  <h2><span data-lang="es" class="active">Soluciones integrales de telecomunicaciones.</span><span data-lang="en">Comprehensive telecommunications solutions.</span></h2>
+  <p class="section-sub"><span data-lang="es" class="active">Desde conectividad de alta disponibilidad hasta asesoría especializada, cubrimos todo lo que tu red y negocio necesitan.</span><span data-lang="en">From high-availability connectivity to specialized advisory, we cover everything your network and business need.</span></p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <h3><span data-lang="es" class="active">Internet de alta velocidad</span><span data-lang="en">High-speed Internet</span></h3>
+      <p><span data-lang="es" class="active">Conectividad empresarial con enlaces dedicados, alta disponibilidad y latencia optimizada para el continente americano.</span><span data-lang="en">Enterprise connectivity with dedicated links, high availability and optimized latency across the Americas.</span></p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+      <h3><span data-lang="es" class="active">Carrier de telecomunicaciones</span><span data-lang="en">Telecommunications Carrier</span></h3>
+      <p><span data-lang="es" class="active">Infraestructura de backbone regional con redundancia, conmutación y tránsito de voz y datos para operadoras.</span><span data-lang="en">Regional backbone infrastructure with redundancy, switching and voice/data transit for operators.</span></p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <h3><span data-lang="es" class="active">Soporte técnico a operadoras</span><span data-lang="en">Technical Support for Carriers</span></h3>
+      <p><span data-lang="es" class="active">Asistencia especializada en gestión de red, monitoreo proactivo y resolución de incidentes en tiempo real.</span><span data-lang="en">Specialized assistance in network management, proactive monitoring and real-time incident resolution.</span></p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <h3><span data-lang="es" class="active">Monitoreo 24/7</span><span data-lang="en">24/7 Monitoring</span></h3>
+      <p><span data-lang="es" class="active">Vigilancia permanente de tu red con alertas en tiempo real y respuesta inmediata ante cualquier incidente.</span><span data-lang="en">Continuous network surveillance with real-time alerts and immediate response to any incident.</span></p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+      <h3><span data-lang="es" class="active">Redundancia & Failover</span><span data-lang="en">Redundancy & Failover</span></h3>
+      <p><span data-lang="es" class="active">Arquitectura multi-ruta con conmutación automática para garantizar continuidad operativa ante fallas.</span><span data-lang="en">Multi-path architecture with automatic switching to ensure operational continuity during failures.</span></p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3><span data-lang="es" class="active">SLAs garantizados</span><span data-lang="en">Guaranteed SLAs</span></h3>
+      <p><span data-lang="es" class="active">Acuerdos de nivel de servicio claros, con métricas verificables y compensaciones bien definidas.</span><span data-lang="en">Clear service level agreements with verifiable metrics and well-defined compensations.</span></p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      <h3><span data-lang="es" class="active">Consultoría en ciberseguridad</span><span data-lang="en">Cybersecurity Consulting</span></h3>
+      <p><span data-lang="es" class="active">Evaluación de vulnerabilidades, diseño de políticas de seguridad y protección de infraestructura crítica para operadoras.</span><span data-lang="en">Vulnerability assessment, security policy design and critical infrastructure protection for carriers.</span></p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h3><span data-lang="es" class="active">Asesoría regulatoria</span><span data-lang="en">Regulatory Advisory</span></h3>
+      <p><span data-lang="es" class="active">Acompañamiento en licenciamiento, cumplimiento con entes reguladores y marcos normativos del sector en las Américas.</span><span data-lang="en">Support in licensing, regulatory compliance and normative frameworks across the Americas.</span></p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <h3><span data-lang="es" class="active">Asesoría financiera en tecnología</span><span data-lang="en">Financial Advisory in Technology</span></h3>
+      <p><span data-lang="es" class="active">Estructuración financiera, análisis de viabilidad e inversiones para proyectos de infraestructura tecnológica.</span><span data-lang="en">Financial structuring, feasibility analysis and investment support for technology infrastructure projects.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY ═══ -->
+<section class="section" id="nosotros">
+  <div class="sec-tag"><span data-lang="es" class="active">Por qué elegirnos</span><span data-lang="en">Why choose us</span></div>
+  <div class="why-grid">
+    <div>
+      <h2><span data-lang="es" class="active">Confianza construida sobre infraestructura sólida.</span><span data-lang="en">Trust built on solid infrastructure.</span></h2>
+      <p style="font-size:15px;color:var(--text2);line-height:1.75;margin:20px 0 32px;"><span data-lang="es" class="active">METANETWORK no es solo un proveedor. Somos el carrier tecnológico que opera junto a las operadoras más exigentes del continente, con foco en disponibilidad, rendimiento y acompañamiento técnico real.</span><span data-lang="en">METANETWORK is not just a provider. We are the technology carrier that works alongside the most demanding operators on the continent, focused on availability, performance and real technical support.</span></p>
+      <a class="btn-primary" href="mailto:financiero@lpzlaw.com"><span data-lang="es" class="active">Hablar con un especialista →</span><span data-lang="en">Talk to a specialist →</span></a>
+    </div>
+    <div class="pillar-list">
+      <div class="pillar"><div class="pillar-num">01</div><div><h4><span data-lang="es" class="active">Equipo especializado</span><span data-lang="en">Specialized team</span></h4><p><span data-lang="es" class="active">Ingenieros certificados con experiencia en redes de telecomunicaciones de gran escala.</span><span data-lang="en">Certified engineers with experience in large-scale telecommunications networks.</span></p></div></div>
+      <div class="pillar"><div class="pillar-num">03</div><div><h4><span data-lang="es" class="active">Infraestructura robusta</span><span data-lang="en">Robust infrastructure</span></h4><p><span data-lang="es" class="active">Backbone redundante con rutas diversificadas para el menor tiempo de inactividad posible.</span><span data-lang="en">Redundant backbone with diversified routes for minimum possible downtime.</span></p></div></div>
+      <div class="pillar"><div class="pillar-num">04</div><div><h4><span data-lang="es" class="active">Compromiso con el cliente</span><span data-lang="en">Client commitment</span></h4><p><span data-lang="es" class="active">No vendemos conexiones. Construimos relaciones de largo plazo con cada operadora.</span><span data-lang="en">We don't sell connections. We build long-term relationships with every operator.</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PUBLICATIONS ═══ -->
+<section class="section" id="publicaciones">
+  <div class="sec-tag"><span data-lang="es" class="active">Publicaciones destacadas</span><span data-lang="en">Featured insights</span></div>
+  <h2><span data-lang="es" class="active">IA y el futuro de las telecomunicaciones.</span><span data-lang="en">AI and the future of telecommunications.</span></h2>
+  <p class="section-sub"><span data-lang="es" class="active">La inteligencia artificial está redefiniendo la industria. En METANETWORK seguimos de cerca los avances que moldean el futuro de la conectividad.</span><span data-lang="en">Artificial intelligence is redefining the industry. At METANETWORK we closely follow the advances shaping the future of connectivity.</span></p>
+  <div class="pub-grid">
+    <div class="pub-card">
+      <div><span class="pub-tag">AI · Telecom</span></div>
+      <div class="pub-source">Ericsson</div>
+      <div class="pub-title"><span data-lang="es" class="active">IA en redes de telecomunicaciones: la transformación que viene</span><span data-lang="en">AI in telecom networks: the coming transformation</span></div>
+      <p class="pub-desc"><span data-lang="es" class="active">Ericsson analiza cómo la IA optimiza la gestión de redes móviles y fijas, permitiendo a los operadores anticipar fallas, automatizar operaciones y mejorar la experiencia del usuario a escala.</span><span data-lang="en">Ericsson analyzes how AI is optimizing mobile and fixed network management.</span></p>
+      <a class="pub-link" href="https://www.ericsson.com/en/ai" target="_blank" rel="noopener"><span data-lang="es" class="active">Leer publicación</span><span data-lang="en">Read more</span></a>
+    </div>
+    <div class="pub-card">
+      <div><span class="pub-tag">Generative AI · Strategy</span></div>
+      <div class="pub-source">Oliver Wyman</div>
+      <div class="pub-title"><span data-lang="es" class="active">Por qué las telcos deben adoptar la IA generativa para crecer</span><span data-lang="en">Why telcos must embrace generative AI to boost growth</span></div>
+      <p class="pub-desc"><span data-lang="es" class="active">Oliver Wyman argumenta que las empresas de telecomunicaciones que no integren la IA generativa quedarán rezagadas. Oportunidades en atención al cliente, diseño de red y monetización de datos.</span><span data-lang="en">Oliver Wyman argues that telcos failing to integrate generative AI will fall behind.</span></p>
+      <a class="pub-link" href="https://www-oliverwyman-com.translate.goog/our-expertise/insights/2025/jan/why-telcos-must-embrace-generative-ai-to-boost-growth.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc" target="_blank" rel="noopener"><span data-lang="es" class="active">Leer publicación</span><span data-lang="en">Read more</span></a>
+    </div>
+    <div class="pub-card">
+      <div><span class="pub-tag">AI · Infrastructure</span></div>
+      <div class="pub-source">NVIDIA</div>
+      <div class="pub-title"><span data-lang="es" class="active">NVIDIA y la IA para la industria de las telecomunicaciones</span><span data-lang="en">NVIDIA AI for the telecommunications industry</span></div>
+      <p class="pub-desc"><span data-lang="es" class="active">NVIDIA presenta su plataforma de IA orientada a operadores de telecomunicaciones, con soluciones para automatización de redes RAN y despliegue de modelos de lenguaje en el edge.</span><span data-lang="en">NVIDIA presents its AI platform for telecom operators, with solutions for RAN automation and edge deployment.</span></p>
+      <a class="pub-link" href="https://www.nvidia.com/es-la/industries/telecommunications/ai/" target="_blank" rel="noopener"><span data-lang="es" class="active">Leer publicación</span><span data-lang="en">Read more</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="section" id="contacto">
+  <div class="sec-tag"><span data-lang="es" class="active">Contacto</span><span data-lang="en">Contact</span></div>
+  <h2><span data-lang="es" class="active">¿Necesitás un carrier confiable? Hablemos.</span><span data-lang="en">Need a reliable carrier? Let's talk.</span></h2>
+  <p class="section-sub"><span data-lang="es" class="active">Cada consulta es tratada con seriedad y rapidez. Cuéntanos tu necesidad y un especialista te responde.</span><span data-lang="en">Every inquiry is handled with care and speed. Tell us your needs and a specialist will get back to you.</span></p>
+  <div class="contact-grid">
+    <div>
+      <div class="ct-label"><span data-lang="es" class="active">Dirección</span><span data-lang="en">Address</span></div>
+      <div class="ct-val">Av. 9 de Octubre 1911, Edf. Finansur Ps. 21 Ofc. 1<br>E/ Los Ríos y Esmeraldas, Guayaquil, Ecuador</div>
+      <div class="ct-label">Email</div>
+      <div class="ct-val"><a href="mailto:financiero@lpzlaw.com">financiero@lpzlaw.com</a></div>
+      <div class="ct-label"><span data-lang="es" class="active">Teléfono / WhatsApp</span><span data-lang="en">Phone / WhatsApp</span></div>
+      <div class="ct-val"><a href="tel:+593995352227">+593 99 535 2227</a> &nbsp;·&nbsp; <a class="wa" href="https://wa.me/593995352227?text=Hola%2C%20quiero%20más%20información%20sobre%20los%20servicios%20de%20METANETWORK." target="_blank">WhatsApp →</a></div>
+      <div class="ct-label"><span data-lang="es" class="active">Soporte técnico</span><span data-lang="en">Technical support</span></div>
+      <div class="ct-val"><span data-lang="es" class="active">24/7 — según plan contratado</span><span data-lang="en">24/7 — according to contracted plan</span></div>
+      <div class="ct-label"><span data-lang="es" class="active">Horario comercial</span><span data-lang="en">Business hours</span></div>
+      <div class="ct-val"><span data-lang="es" class="active">Lunes a viernes · 9:00 a 18:00</span><span data-lang="en">Monday to Friday · 9:00 AM to 6:00 PM</span></div>
+      <div style="margin-top:8px;">
+        <div class="faq-item"><div class="faq-q"><span data-lang="es" class="active">¿Ofrecen soporte fuera del horario comercial?</span><span data-lang="en">Do you offer support outside business hours?</span></div><div class="faq-a"><span data-lang="es" class="active">Sí, contamos con planes de soporte 24/7 para operadoras con requerimientos críticos.</span><span data-lang="en">Yes, we have 24/7 support plans for operators with critical requirements.</span></div></div>
+        <div class="faq-item"><div class="faq-q"><span data-lang="es" class="active">¿En qué países tienen cobertura?</span><span data-lang="en">Which countries do you cover?</span></div><div class="faq-a"><span data-lang="es" class="active">Operamos en más de 35 países en todo el continente americano.</span><span data-lang="en">We operate in more than 35 countries across the Americas.</span></div></div>
+        <div class="faq-item"><div class="faq-q"><span data-lang="es" class="active">¿Qué necesito para comenzar?</span><span data-lang="en">What do I need to get started?</span></div><div class="faq-a"><span data-lang="es" class="active">Solo una consulta inicial. Analizamos tu situación y presentamos una propuesta clara.</span><span data-lang="en">Just an initial consultation. We analyze your situation and present a clear proposal.</span></div></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3><span data-lang="es" class="active">Envianos tu consulta</span><span data-lang="en">Send us your inquiry</span></h3>
+      <div class="form-group"><label><span data-lang="es" class="active">Nombre o empresa</span><span data-lang="en">Name or company</span></label><input type="text"/></div>
+      <div class="form-group"><label><span data-lang="es" class="active">Correo electrónico</span><span data-lang="en">Email address</span></label><input type="email" placeholder="correo@empresa.com"/></div>
+      <div class="form-group"><label><span data-lang="es" class="active">Mensaje</span><span data-lang="en">Message</span></label><textarea></textarea></div>
+      <button class="form-submit" onclick="window.location='mailto:financiero@lpzlaw.com'"><span data-lang="es" class="active">Enviar consulta →</span><span data-lang="en">Send inquiry →</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <a href="#" style="text-decoration:none">
+    <svg width="180" height="36"><use href="#logo-full-white"/></svg>
+  </a>
+  <div class="footer-copy">© 2026 METANETWORK · Guayaquil, Ecuador · <a href="mailto:financiero@lpzlaw.com">financiero@lpzlaw.com</a> · <span data-lang="es" class="active">Todos los derechos reservados</span><span data-lang="en">All rights reserved</span></div>
+</footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.classList.toggle('active',el.getAttribute('data-lang')===l);
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent.toLowerCase()===l);
+  });
+  document.documentElement.lang=l;
+}
+</script>
+</body>
+</html>
