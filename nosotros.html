@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nosotros — METANETWORK</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0a1628;--bg2:#0d1f3c;--bg3:#112244;
+  --border:rgba(100,160,255,0.15);
+  --accent:#4a9eff;--accent2:#7bb8ff;
+  --text:#c8d8f0;--text2:#8aaad0;--text3:#5a7a9a;
+  --card:rgba(15,35,70,0.8);--glow:rgba(74,158,255,0.08);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;
+  background-image:linear-gradient(rgba(74,158,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,158,255,0.04) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 60px;background:rgba(10,22,40,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;color:var(--text2);text-decoration:none;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a.active{border-bottom:2px solid var(--accent);padding-bottom:2px;}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.lang-toggle{display:flex;background:rgba(74,158,255,0.1);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.lang-btn{font-size:11px;font-weight:700;letter-spacing:1px;padding:6px 14px;cursor:pointer;border:none;background:transparent;color:var(--text2);transition:all .2s;}
+.lang-btn.active{background:var(--accent);color:#fff;}
+.nav-cta{font-size:11px;font-weight:700;letter-spacing:1.5px;color:#fff;background:var(--accent);padding:9px 20px;border-radius:6px;text-decoration:none;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+.nav-dropdown{position:relative;}
+.nav-dropdown-toggle{display:flex;align-items:center;gap:4px;cursor:pointer;}
+.dropdown-menu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:rgba(10,22,40,0.98);border:1px solid var(--border);border-radius:8px;min-width:280px;padding:8px 0;z-index:200;backdrop-filter:blur(16px);}
+.dropdown-menu li{list-style:none;}
+.dropdown-menu li a{display:block;padding:10px 18px;font-size:12px;font-weight:600;color:var(--text2);text-decoration:none;transition:color .2s,background .2s;}
+.dropdown-menu li a:hover{color:#fff;background:rgba(74,158,255,0.1);}
+.dropdown-menu li:not(:last-child){border-bottom:1px solid var(--border);}
+.nav-dropdown:hover .dropdown-menu{display:block;}
+
+/* HERO */
+.page-hero{padding:140px 60px 80px;position:relative;border-bottom:1px solid var(--border);overflow:hidden;}
+.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(74,158,255,0.08) 0%,transparent 65%);pointer-events:none;}
+.breadcrumb{font-size:11px;color:var(--text3);letter-spacing:1px;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.breadcrumb a{color:var(--text3);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--accent);}
+.breadcrumb span{color:var(--accent);}
+.page-hero h1{font-size:clamp(28px,4vw,58px);font-weight:800;letter-spacing:-1.5px;color:#fff;margin-bottom:16px;line-height:1.05;}
+.page-hero h1 em{color:var(--accent);font-style:normal;}
+.page-hero p{font-size:15px;color:var(--text2);max-width:600px;line-height:1.85;}
+
+/* CONTENIDO */
+.content{padding:80px 60px 100px;display:flex;flex-direction:column;gap:80px;position:relative;}
+
+/* BLOQUE VISIÓN / MISIÓN */
+.vmv-block{display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:start;}
+.vmv-label-col{}
+.vmv-tag{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.vmv-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent);}
+.vmv-title{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-1px;color:#fff;line-height:1.1;margin-bottom:0;}
+.vmv-icon-wrap{width:72px;height:72px;border-radius:16px;background:rgba(74,158,255,0.08);border:1px solid rgba(74,158,255,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.vmv-body{}
+.vmv-body p{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:16px;}
+.vmv-body p strong{color:#fff;}
+.vmv-body p:last-child{margin-bottom:0;}
+.vmv-quote{border-left:3px solid var(--accent);padding:16px 20px;margin:24px 0;background:rgba(74,158,255,0.05);border-radius:0 8px 8px 0;}
+.vmv-quote p{font-size:15px;font-style:italic;color:var(--accent2);line-height:1.8;margin:0;}
+
+/* SEPARADOR */
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);}
+
+/* VALORES */
+.valores-header{text-align:center;margin-bottom:56px;}
+.valores-header .vmv-tag{justify-content:center;}
+.valores-header .vmv-tag::before{display:none;}
+.valores-header h2{font-size:clamp(26px,3.5vw,42px);font-weight:800;letter-spacing:-1px;color:#fff;margin-top:8px;}
+.valores-header p{font-size:15px;color:var(--text2);max-width:560px;margin:12px auto 0;line-height:1.8;}
+
+.valores-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.valor-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:border-color .25s,transform .2s;}
+.valor-card:hover{border-color:rgba(74,158,255,0.4);transform:translateY(-3px);}
+.valor-card:hover .valor-icon{background:rgba(74,158,255,0.18);}
+.valor-icon{width:48px;height:48px;border-radius:12px;background:rgba(74,158,255,0.1);border:1px solid rgba(74,158,255,0.2);display:flex;align-items:center;justify-content:center;transition:background .25s;}
+.valor-num{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;}
+.valor-name{font-size:17px;font-weight:700;color:#fff;letter-spacing:-.3px;}
+.valor-desc{font-size:13px;color:var(--text2);line-height:1.75;}
+.valor-principle{font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--text3);border-top:1px solid var(--border);padding-top:10px;margin-top:4px;}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.stat-item{background:var(--card);padding:32px 24px;text-align:center;}
+.stat-num{font-size:36px;font-weight:800;letter-spacing:-1.5px;color:#fff;margin-bottom:6px;}
+.stat-num span{color:var(--accent);}
+.stat-lbl{font-size:11px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;}
+
+/* FOOTER */
+footer{padding:36px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.footer-copy{font-size:12px;color:var(--text3);}
+.footer-copy a{color:var(--accent);text-decoration:none;}
+
+@media(max-width:900px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .page-hero,.content{padding-left:24px;padding-right:24px;}
+  .vmv-block{grid-template-columns:1fr;}
+  .valores-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  footer{padding:24px 20px;flex-direction:column;text-align:center;}
+}
+[data-lang]{display:none;}
+[data-lang].active{display:block;}
+span[data-lang]{display:none;}
+span[data-lang].active{display:inline;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <svg width="220" height="40" viewBox="0 0 280 48">
+      <polygon points="24,4 40,13 40,31 24,40 8,31 8,13" fill="#1a3a6e" stroke="#4a9eff" stroke-width="1.2"/>
+      <circle cx="24" cy="4"  r="2.2" fill="#4a9eff"/><circle cx="40" cy="13" r="2.2" fill="#4a9eff"/>
+      <circle cx="40" cy="31" r="2.2" fill="#4a9eff"/><circle cx="24" cy="40" r="2.2" fill="#4a9eff"/>
+      <circle cx="8"  cy="31" r="2.2" fill="#4a9eff"/><circle cx="8"  cy="13" r="2.2" fill="#4a9eff"/>
+      <circle cx="24" cy="22" r="3.5" fill="#4a9eff"/>
+      <line x1="24" y1="22" x2="24" y2="4"  stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="40" y2="13" stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="40" y2="31" stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="24" y2="40" stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="8"  y2="31" stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="8"  y2="13" stroke="#7bb8ff" stroke-width="1"/>
+      <text x="54" y="27" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="4">
+        <tspan fill="#ffffff">META</tspan><tspan fill="#4a9eff">NETWORK</tspan>
+      </text>
+      <text x="55" y="39" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" font-weight="600" letter-spacing="3" fill="#5a7a9a">CARRIER TECNOLÓGICO</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="servicios.html"><span data-lang="es" class="active">SERVICIOS</span><span data-lang="en">SERVICES</span></a></li>
+    <li><a href="nosotros.html" class="active"><span data-lang="es" class="active">NOSOTROS</span><span data-lang="en">ABOUT</span></a></li>
+    <li><a href="index.html#publicaciones"><span data-lang="es" class="active">PUBLICACIONES</span><span data-lang="en">INSIGHTS</span></a></li>
+    <li><a href="https://www.arcotel.gob.ec/estadisticas-de-telecomunicaciones2/" target="_blank" rel="noopener"><span data-lang="es" class="active">ESTADÍSTICAS</span><span data-lang="en">STATISTICS</span></a></li>
+    <li class="nav-dropdown">
+      <a href="#" onclick="return false;" class="nav-dropdown-toggle"><span data-lang="es" class="active">REGULACIONES</span><span data-lang="en">REGULATIONS</span> ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="http://www.arcotel.gob.ec/" target="_blank">ARCOTEL</a></li>
+        <li><a href="http://www.telecomunicaciones.gob.ec/" target="_blank">MINTEL</a></li>
+        <li><a href="https://www.gob.ec/sites/default/files/regulations/2018-10/Resolucion-ARCOTEL-2018-0716-condiciones%20generales%20adhesi%C3%B3n.pdf" target="_blank"><span data-lang="es" class="active">Norma Técnica — Contratos de Adhesión</span><span data-lang="en">Technical Standard — Adhesion Contracts</span></a></li>
+        <li><a href="https://www.arcotel.gob.ec/wp-content/uploads/2016/06/reglamento-para-los-abonados-clientes-sva.pdf" target="_blank"><span data-lang="es" class="active">Reglamento de Abonados</span><span data-lang="en">Subscriber Regulations</span></a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contacto"><span data-lang="es" class="active">CONTACTO</span><span data-lang="en">CONTACT</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a class="nav-cta" href="mailto:financiero@lpzlaw.com"><span data-lang="es" class="active">CONTÁCTANOS</span><span data-lang="en">CONTACT US</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <a href="index.html">Inicio</a> › <span><span data-lang="es" class="active">Nosotros</span><span data-lang="en">About</span></span>
+  </div>
+  <h1><span data-lang="es" class="active">Quiénes <em>somos</em></span><span data-lang="en">Who <em>we are</em></span></h1>
+  <p><span data-lang="es" class="active">Somos un carrier tecnológico con base en Guayaquil, Ecuador, comprometidos con transformar la conectividad en Latinoamérica y el Caribe mediante infraestructura de clase mundial, innovación y un profundo sentido de responsabilidad social.</span><span data-lang="en">We are a technology carrier based in Guayaquil, Ecuador, committed to transforming connectivity in Latin America and the Caribbean through world-class infrastructure, innovation and a deep sense of social responsibility.</span></p>
+</div>
+
+<div class="content">
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-num">35<span>+</span></div>
+      <div class="stat-lbl"><span data-lang="es" class="active">Países cubiertos</span><span data-lang="en">Countries covered</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">99<span>.9%</span></div>
+      <div class="stat-lbl"><span data-lang="es" class="active">Uptime garantizado</span><span data-lang="en">Guaranteed uptime</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24<span>/7</span></div>
+      <div class="stat-lbl"><span data-lang="es" class="active">Soporte técnico</span><span data-lang="en">Technical support</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4<span></span></div>
+      <div class="stat-lbl"><span data-lang="es" class="active">Regiones activas</span><span data-lang="en">Active regions</span></div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- VISIÓN -->
+  <div class="vmv-block">
+    <div class="vmv-label-col">
+      <div class="vmv-icon-wrap">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </div>
+      <div class="vmv-tag"><span data-lang="es" class="active">Nuestra visión</span><span data-lang="en">Our vision</span></div>
+      <h2 class="vmv-title"><span data-lang="es" class="active">Hacia dónde vamos</span><span data-lang="en">Where we are headed</span></h2>
+    </div>
+    <div class="vmv-body">
+      <div class="vmv-quote">
+        <p><span data-lang="es" class="active">"Ser el carrier internacional de referencia en Latinoamérica y el Caribe, liderando grandes proyectos de ingeniería y conectividad que transformen la infraestructura digital de la región."</span><span data-lang="en">"To be the leading international carrier in Latin America and the Caribbean, leading major engineering and connectivity projects that transform the region's digital infrastructure."</span></p>
+      </div>
+      <p><span data-lang="es" class="active">METANETWORK aspira a consolidarse como un <strong>actor estratégico de escala continental</strong> en el ecosistema de telecomunicaciones de América Latina y el Caribe. Nuestra visión trasciende las fronteras nacionales: concebimos un futuro en el que la región cuente con una infraestructura de conectividad robusta, resiliente e inteligente, capaz de soportar el crecimiento exponencial de la economía digital.</span><span data-lang="en">METANETWORK aspires to consolidate itself as a <strong>strategic continental-scale actor</strong> in the Latin American and Caribbean telecommunications ecosystem. Our vision transcends national borders: we envision a future where the region has robust, resilient and intelligent connectivity infrastructure capable of supporting the exponential growth of the digital economy.</span></p>
+      <p><span data-lang="es" class="active">Proyectamos nuestra expansión a través del desarrollo de <strong>grandes proyectos de ingeniería de redes</strong>, despliegue de fibra óptica submarina e intercontinental, y la implementación de tecnologías emergentes como redes 5G, edge computing e inteligencia artificial aplicada a las telecomunicaciones. Cada proyecto es una oportunidad para elevar el estándar de la conectividad regional y acercar a millones de personas a las oportunidades del mundo digital.</span><span data-lang="en">We project our expansion through the development of <strong>large-scale network engineering projects</strong>, deployment of submarine and intercontinental fiber optics, and the implementation of emerging technologies such as 5G networks, edge computing and artificial intelligence applied to telecommunications. Each project is an opportunity to raise the standard of regional connectivity and bring millions of people closer to the opportunities of the digital world.</span></p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- MISIÓN -->
+  <div class="vmv-block">
+    <div class="vmv-label-col">
+      <div class="vmv-icon-wrap">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="6"/>
+          <circle cx="12" cy="12" r="2"/>
+        </svg>
+      </div>
+      <div class="vmv-tag"><span data-lang="es" class="active">Nuestra misión</span><span data-lang="en">Our mission</span></div>
+      <h2 class="vmv-title"><span data-lang="es" class="active">Por qué existimos</span><span data-lang="en">Why we exist</span></h2>
+    </div>
+    <div class="vmv-body">
+      <div class="vmv-quote">
+        <p><span data-lang="es" class="active">"Cerrar la brecha digital de acceso a internet en Latinoamérica, haciendo uso de las nuevas tecnologías emergentes para garantizar conectividad de calidad, accesible e inclusiva para todos."</span><span data-lang="en">"Bridge the digital divide in internet access across Latin America, leveraging emerging technologies to ensure quality, accessible and inclusive connectivity for all."</span></p>
+      </div>
+      <p><span data-lang="es" class="active">En METANETWORK entendemos que el acceso a internet no es un privilegio, sino un <strong>derecho fundamental para el desarrollo humano</strong> en el siglo XXI. Millones de personas en Latinoamérica aún carecen de conectividad confiable, limitando su acceso a educación, salud, empleo y participación ciudadana. Nuestra misión es cambiar esta realidad.</span><span data-lang="en">At METANETWORK we understand that internet access is not a privilege, but a <strong>fundamental right for human development</strong> in the 21st century. Millions of people in Latin America still lack reliable connectivity, limiting their access to education, health, employment and civic participation. Our mission is to change this reality.</span></p>
+      <p><span data-lang="es" class="active">Lo hacemos desplegando infraestructura donde otros no llegan, adoptando <strong>tecnologías emergentes</strong> como redes satelitales de baja órbita (LEO), conectividad inalámbrica de largo alcance, redes comunitarias y soluciones de acceso basadas en inteligencia artificial. Cada conexión que establecemos es un paso hacia una región más equitativa, próspera y digitalmente soberana.</span><span data-lang="en">We do this by deploying infrastructure where others don't reach, adopting <strong>emerging technologies</strong> such as low-orbit satellite networks (LEO), long-range wireless connectivity, community networks and AI-based access solutions. Each connection we establish is a step toward a more equitable, prosperous and digitally sovereign region.</span></p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- VALORES -->
+  <div>
+    <div class="valores-header">
+      <div class="vmv-tag"><span data-lang="es" class="active">Nuestros valores</span><span data-lang="en">Our values</span></div>
+      <h2><span data-lang="es" class="active">Los principios que nos guían</span><span data-lang="en">The principles that guide us</span></h2>
+      <p><span data-lang="es" class="active">Construidos sobre los pilares del liderazgo empresarial ético que promueven las mejores escuelas de negocios del mundo.</span><span data-lang="en">Built on the pillars of ethical business leadership promoted by the world's leading business schools.</span></p>
+    </div>
+
+    <div class="valores-grid">
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="valor-num">01</div>
+        <div class="valor-name"><span data-lang="es" class="active">Integridad</span><span data-lang="en">Integrity</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">Actuamos con honestidad, transparencia y coherencia en cada decisión. Nuestros compromisos se cumplen sin excepción, porque la confianza de nuestros clientes, socios y comunidades es el activo más valioso que tenemos.</span><span data-lang="en">We act with honesty, transparency and consistency in every decision. Our commitments are fulfilled without exception, because the trust of our clients, partners and communities is the most valuable asset we have.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Harvard: "Do the right thing, even when no one is watching."</span><span data-lang="en">Harvard principle: "Do the right thing, even when no one is watching."</span></div>
+      </div>
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="valor-num">02</div>
+        <div class="valor-name"><span data-lang="es" class="active">Responsabilidad social</span><span data-lang="en">Social responsibility</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">Reconocemos que nuestras operaciones tienen impacto en las comunidades donde trabajamos. Asumimos la responsabilidad de generar valor compartido, contribuyendo activamente a reducir la brecha digital y promover el desarrollo sostenible en la región.</span><span data-lang="en">We recognize that our operations impact the communities where we work. We take responsibility for generating shared value, actively contributing to reducing the digital divide and promoting sustainable development in the region.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Stanford: "Create shared value beyond shareholder returns."</span><span data-lang="en">Stanford principle: "Create shared value beyond shareholder returns."</span></div>
+      </div>
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="valor-num">03</div>
+        <div class="valor-name"><span data-lang="es" class="active">Excelencia</span><span data-lang="en">Excellence</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">Nos exigimos los más altos estándares en cada servicio, proceso y entregable. La excelencia no es un destino sino una práctica cotidiana: buscamos superar continuamente las expectativas de nuestros clientes y los referentes de la industria.</span><span data-lang="en">We demand the highest standards in every service, process and deliverable. Excellence is not a destination but a daily practice: we continuously seek to exceed our clients' expectations and industry benchmarks.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Harvard: "Pursue mastery and continuous improvement in all endeavors."</span><span data-lang="en">Harvard principle: "Pursue mastery and continuous improvement in all endeavors."</span></div>
+      </div>
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </div>
+        <div class="valor-num">04</div>
+        <div class="valor-name"><span data-lang="es" class="active">Innovación</span><span data-lang="en">Innovation</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">Fomentamos una cultura de pensamiento creativo y adopción temprana de tecnologías emergentes. Cuestionamos el statu quo y buscamos soluciones disruptivas que permitan a nuestros clientes y a la región mantenerse a la vanguardia de la revolución digital.</span><span data-lang="en">We foster a culture of creative thinking and early adoption of emerging technologies. We challenge the status quo and seek disruptive solutions that enable our clients and the region to remain at the forefront of the digital revolution.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Stanford: "Embrace a bias toward action and experimentation."</span><span data-lang="en">Stanford principle: "Embrace a bias toward action and experimentation."</span></div>
+      </div>
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="valor-num">05</div>
+        <div class="valor-name"><span data-lang="es" class="active">Confiabilidad</span><span data-lang="en">Reliability</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">La infraestructura que gestionamos es crítica para nuestros clientes. Por ello, garantizamos disponibilidad, consistencia y cumplimiento de SLAs en todo momento. Ser confiables no es solo una promesa técnica: es el fundamento de cada relación que construimos.</span><span data-lang="en">The infrastructure we manage is critical for our clients. Therefore, we guarantee availability, consistency and SLA compliance at all times. Being reliable is not just a technical promise: it is the foundation of every relationship we build.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Harvard: "Build trust through consistent, predictable performance."</span><span data-lang="en">Harvard principle: "Build trust through consistent, predictable performance."</span></div>
+      </div>
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="valor-num">06</div>
+        <div class="valor-name"><span data-lang="es" class="active">Visión global</span><span data-lang="en">Global vision</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">Pensamos en escala continental e internacional. Integramos perspectivas diversas, respetamos las culturas locales y desarrollamos soluciones adaptadas a los contextos de cada país, sin perder de vista el objetivo mayor de conectar a Latinoamérica con el mundo.</span><span data-lang="en">We think at continental and international scale. We integrate diverse perspectives, respect local cultures and develop solutions adapted to each country's context, without losing sight of the larger goal of connecting Latin America with the world.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Stanford: "Lead with a global mindset and local sensitivity."</span><span data-lang="en">Stanford principle: "Lead with a global mindset and local sensitivity."</span></div>
+      </div>
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="valor-num">07</div>
+        <div class="valor-name"><span data-lang="es" class="active">Compromiso humano</span><span data-lang="en">Human commitment</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">Ponemos a las personas en el centro de todo lo que hacemos: nuestros colaboradores, clientes y las comunidades que servimos. Creemos en el liderazgo empático, el desarrollo del talento y la construcción de entornos donde cada persona pueda alcanzar su máximo potencial.</span><span data-lang="en">We put people at the center of everything we do: our collaborators, clients and the communities we serve. We believe in empathetic leadership, talent development and building environments where every person can reach their full potential.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Harvard: "Servant leadership: lead for others, not for yourself."</span><span data-lang="en">Harvard principle: "Servant leadership: lead for others, not for yourself."</span></div>
+      </div>
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="valor-num">08</div>
+        <div class="valor-name"><span data-lang="es" class="active">Responsabilidad</span><span data-lang="en">Accountability</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">Asumimos plena responsabilidad por nuestras decisiones y resultados. Promovemos una cultura donde los errores se reconocen, se aprende de ellos y se corrigen con rapidez. La rendición de cuentas fortalece nuestra organización y la confianza de quienes nos eligen.</span><span data-lang="en">We take full responsibility for our decisions and results. We promote a culture where mistakes are acknowledged, learned from and corrected quickly. Accountability strengthens our organization and the trust of those who choose us.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Stanford: "Own your outcomes — success and failure alike."</span><span data-lang="en">Stanford principle: "Own your outcomes — success and failure alike."</span></div>
+      </div>
+
+      <div class="valor-card">
+        <div class="valor-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="valor-num">09</div>
+        <div class="valor-name"><span data-lang="es" class="active">Sostenibilidad</span><span data-lang="en">Sustainability</span></div>
+        <div class="valor-desc"><span data-lang="es" class="active">Desarrollamos nuestras operaciones con consciencia ambiental y social. Integramos criterios ESG en la toma de decisiones estratégicas, apostamos por infraestructuras energéticamente eficientes y alineamos nuestro crecimiento con los Objetivos de Desarrollo Sostenible de la ONU.</span><span data-lang="en">We develop our operations with environmental and social awareness. We integrate ESG criteria into strategic decision-making, invest in energy-efficient infrastructure and align our growth with the UN Sustainable Development Goals.</span></div>
+        <div class="valor-principle"><span data-lang="es" class="active">Principio Harvard: "Long-term value creation requires environmental and social stewardship."</span><span data-lang="en">Harvard principle: "Long-term value creation requires environmental and social stewardship."</span></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" style="text-decoration:none">
+    <svg width="160" height="32" viewBox="0 0 280 48">
+      <polygon points="24,4 40,13 40,31 24,40 8,31 8,13" fill="#1a3a6e" stroke="#4a9eff" stroke-width="1.2"/>
+      <circle cx="24" cy="22" r="3.5" fill="#4a9eff"/>
+      <line x1="24" y1="22" x2="24" y2="4"  stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="40" y2="13" stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="40" y2="31" stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="24" y2="40" stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="8"  y2="31" stroke="#7bb8ff" stroke-width="1"/>
+      <line x1="24" y1="22" x2="8"  y2="13" stroke="#7bb8ff" stroke-width="1"/>
+      <text x="54" y="27" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="4">
+        <tspan fill="#ffffff">META</tspan><tspan fill="#4a9eff">NETWORK</tspan>
+      </text>
+    </svg>
+  </a>
+  <div class="footer-copy">© 2026 METANETWORK · Guayaquil, Ecuador · <a href="mailto:financiero@lpzlaw.com">financiero@lpzlaw.com</a> · <span data-lang="es" class="active">Todos los derechos reservados</span><span data-lang="en">All rights reserved</span></div>
+</footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.classList.toggle('active',el.getAttribute('data-lang')===l);
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent.toLowerCase()===l);
+  });
+  document.documentElement.lang=l;
+}
+</script>
+</body>
+</html>
