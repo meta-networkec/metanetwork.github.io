@@ -309,11 +309,236 @@ span[data-lang].active{display:inline;}
     <span data-lang="es" class="active">Proveemos servicios de internet, telecomunicaciones, ciberseguridad y asesoría especializada para operadoras en todo el continente americano. Base en Guayaquil, Ecuador.</span>
     <span data-lang="en">We provide internet, telecommunications, cybersecurity and advisory services for carriers across the Americas. Headquartered in Guayaquil, Ecuador.</span>
   </p>
-  <div style="max-width:620px;margin-bottom:36px;padding:20px 24px;border:1px solid rgba(74,158,255,0.2);border-left:4px solid #4a9eff;border-radius:0 10px 10px 0;background:rgba(74,158,255,0.05);">
-    <p style="font-size:14.5px;color:var(--text);line-height:1.85;margin:0;">
-      <span data-lang="es" class="active">METANETWORK es una empresa comprometida con la <strong style="color:#fff;">innovación tecnológica</strong> y el desarrollo de soluciones basadas en tecnologías emergentes. Nuestra misión va más allá de la conectividad: trabajamos activamente para <strong style="color:#fff;">cerrar la brecha digital en el Ecuador</strong>, llevando infraestructura de telecomunicaciones de clase mundial a comunidades y sectores que aún no han accedido plenamente a las oportunidades que ofrece la era digital.</span>
-      <span data-lang="en">METANETWORK is a company committed to <strong style="color:#fff;">technological innovation</strong> and the development of emerging technology solutions. Our mission goes beyond connectivity: we actively work to <strong style="color:#fff;">bridge the digital divide in Ecuador</strong>, bringing world-class telecommunications infrastructure to communities and sectors that have yet to fully access the opportunities of the digital era.</span>
-    </p>
+  <div style="display:flex;gap:36px;align-items:center;margin-bottom:36px;flex-wrap:wrap;">
+
+    <div style="flex:1;min-width:280px;padding:20px 24px;border:1px solid rgba(74,158,255,0.2);border-left:4px solid #4a9eff;border-radius:0 10px 10px 0;background:rgba(74,158,255,0.05);">
+      <p style="font-size:14.5px;color:var(--text);line-height:1.85;margin:0;">
+        <span data-lang="es" class="active">METANETWORK es una empresa comprometida con la <strong style="color:#fff;">innovación tecnológica</strong> y el desarrollo de soluciones basadas en tecnologías emergentes. Nuestra misión va más allá de la conectividad: trabajamos activamente para <strong style="color:#fff;">cerrar la brecha digital en el Ecuador</strong>, llevando infraestructura de telecomunicaciones de clase mundial a comunidades y sectores que aún no han accedido plenamente a las oportunidades que ofrece la era digital.</span>
+        <span data-lang="en">METANETWORK is a company committed to <strong style="color:#fff;">technological innovation</strong> and the development of emerging technology solutions. Our mission goes beyond connectivity: we actively work to <strong style="color:#fff;">bridge the digital divide in Ecuador</strong>, bringing world-class telecommunications infrastructure to communities and sectors that have yet to fully access the opportunities of the digital era.</span>
+      </p>
+    </div>
+
+    <!-- IoT / New Tech Illustration -->
+    <div style="flex-shrink:0;">
+      <svg width="340" height="300" viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+        <defs>
+          <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#4a9eff" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#4a9eff" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#7bb8ff" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#7bb8ff" stop-opacity="0"/>
+          </radialGradient>
+
+          <style>
+            .iot-pulse { animation: iotPulse 3s ease-in-out infinite; }
+            .iot-pulse2 { animation: iotPulse 3s ease-in-out infinite 1s; }
+            .iot-pulse3 { animation: iotPulse 3s ease-in-out infinite 2s; }
+            .iot-rotate { animation: iotRotate 18s linear infinite; transform-origin: 170px 150px; }
+            .iot-rotate2 { animation: iotRotate 26s linear infinite reverse; transform-origin: 170px 150px; }
+            .iot-dash { animation: iotDash 2s linear infinite; }
+            .iot-dash2 { animation: iotDash 2.6s linear infinite 0.4s; }
+            .iot-dash3 { animation: iotDash 3.2s linear infinite 0.8s; }
+            .iot-float { animation: iotFloat 4s ease-in-out infinite; }
+            .iot-float2 { animation: iotFloat 4s ease-in-out infinite 1.3s; }
+            .iot-float3 { animation: iotFloat 4s ease-in-out infinite 2.6s; }
+            @keyframes iotPulse {
+              0%,100% { opacity:0.15; r:58; }
+              50% { opacity:0.35; r:66; }
+            }
+            @keyframes iotRotate {
+              from { transform: rotate(0deg); }
+              to   { transform: rotate(360deg); }
+            }
+            @keyframes iotDash {
+              from { stroke-dashoffset: 0; }
+              to   { stroke-dashoffset: -24; }
+            }
+            @keyframes iotFloat {
+              0%,100% { transform: translateY(0); }
+              50%     { transform: translateY(-6px); }
+            }
+          </style>
+        </defs>
+
+        <!-- Glow fondo central -->
+        <ellipse cx="170" cy="150" rx="120" ry="110" fill="url(#glow1)"/>
+        <ellipse cx="170" cy="150" rx="80" ry="72" fill="url(#glow2)"/>
+
+        <!-- Anillos orbitales -->
+        <circle cx="170" cy="150" r="58" fill="none" stroke="#4a9eff" stroke-width="0.5" opacity="0.15" class="iot-pulse"/>
+        <circle cx="170" cy="150" r="58" fill="none" stroke="#4a9eff" stroke-width="0.5" opacity="0.15" class="iot-pulse2"/>
+        <circle cx="170" cy="150" r="95" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.12" stroke-dasharray="4 6"/>
+        <circle cx="170" cy="150" r="128" fill="none" stroke="#7bb8ff" stroke-width="0.5" opacity="0.1" stroke-dasharray="3 8"/>
+
+        <!-- Órbita giratoria 1 — puntos satélite -->
+        <g class="iot-rotate">
+          <circle cx="170" cy="55" r="5" fill="#4a9eff" opacity="0.9"/>
+          <circle cx="265" cy="150" r="4" fill="#7bb8ff" opacity="0.8"/>
+          <circle cx="170" cy="245" r="5" fill="#4a9eff" opacity="0.9"/>
+          <circle cx="75"  cy="150" r="4" fill="#7bb8ff" opacity="0.8"/>
+        </g>
+
+        <!-- Órbita giratoria 2 — elipse inclinada -->
+        <g class="iot-rotate2">
+          <ellipse cx="170" cy="150" rx="95" ry="38" fill="none" stroke="#4a9eff" stroke-width="0.5" opacity="0.18"/>
+          <circle cx="265" cy="150" r="3.5" fill="#4a9eff" opacity="0.7"/>
+          <circle cx="75"  cy="150" r="3.5" fill="#4a9eff" opacity="0.7"/>
+        </g>
+
+        <!-- Líneas de conexión animadas desde centro a nodos periféricos -->
+        <line x1="170" y1="150" x2="62" y2="68"  stroke="#4a9eff" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.4" class="iot-dash"/>
+        <line x1="170" y1="150" x2="278" y2="68"  stroke="#7bb8ff" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.4" class="iot-dash2"/>
+        <line x1="170" y1="150" x2="290" y2="210" stroke="#4a9eff" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.4" class="iot-dash3"/>
+        <line x1="170" y1="150" x2="50"  y2="210" stroke="#7bb8ff" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.4" class="iot-dash"/>
+        <line x1="170" y1="150" x2="170" y2="22"  stroke="#4a9eff" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.3" class="iot-dash2"/>
+        <line x1="170" y1="150" x2="170" y2="278" stroke="#7bb8ff" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.3" class="iot-dash3"/>
+
+        <!-- NODO CENTRAL — Hub IoT -->
+        <g class="iot-float">
+          <circle cx="170" cy="150" r="30" fill="#0d1f3c" stroke="#4a9eff" stroke-width="1.2"/>
+          <circle cx="170" cy="150" r="22" fill="#112244" stroke="#4a9eff" stroke-width="0.6" opacity="0.6"/>
+          <!-- Icono WiFi / señal -->
+          <path d="M162 155 Q170 146 178 155" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M157 160 Q170 141 183 160" fill="none" stroke="#7bb8ff" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="170" cy="158" r="2.2" fill="#4a9eff"/>
+        </g>
+
+        <!-- NODO 1 — Smart City (arriba izquierda) -->
+        <g class="iot-float2" style="transform-origin:62px 68px">
+          <rect x="46" y="52" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#4a9eff" stroke-width="1"/>
+          <!-- edificio icono -->
+          <rect x="55" y="60" width="6" height="18" rx="1" fill="#4a9eff" opacity="0.7"/>
+          <rect x="63" y="65" width="6" height="13" rx="1" fill="#4a9eff" opacity="0.5"/>
+          <rect x="57" y="57" width="2" height="2" fill="#7bb8ff" opacity="0.9"/>
+          <rect x="65" y="62" width="2" height="2" fill="#7bb8ff" opacity="0.7"/>
+          <text x="62" y="96" text-anchor="middle" fill="#8aaad0" font-size="8" font-family="Arial" letter-spacing="0.3">Smart City</text>
+        </g>
+
+        <!-- NODO 2 — AI / Cloud (arriba derecha) -->
+        <g class="iot-float3" style="transform-origin:278px 68px">
+          <rect x="262" y="52" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#7bb8ff" stroke-width="1"/>
+          <!-- nube + rayo -->
+          <path d="M272 72 Q272 67 277 67 Q278 63 283 64 Q287 64 287 68 Q290 68 290 72Z" fill="none" stroke="#7bb8ff" stroke-width="1.3" stroke-linejoin="round"/>
+          <line x1="279" y1="72" x2="276" y2="77" stroke="#4a9eff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="276" y1="77" x2="280" y2="77" stroke="#4a9eff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="280" y1="77" x2="277" y2="82" stroke="#4a9eff" stroke-width="1.5" stroke-linecap="round"/>
+          <text x="278" y="96" text-anchor="middle" fill="#8aaad0" font-size="8" font-family="Arial" letter-spacing="0.3">AI Cloud</text>
+        </g>
+
+        <!-- NODO 3 — IoT Devices (derecha) -->
+        <g class="iot-float" style="transform-origin:290px 210px">
+          <rect x="274" y="194" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#4a9eff" stroke-width="1"/>
+          <!-- chip icono -->
+          <rect x="281" y="201" width="18" height="18" rx="3" fill="none" stroke="#4a9eff" stroke-width="1.2"/>
+          <rect x="285" y="205" width="10" height="10" rx="1.5" fill="#4a9eff" opacity="0.3"/>
+          <line x1="281" y1="204" x2="278" y2="204" stroke="#7bb8ff" stroke-width="1" stroke-linecap="round"/>
+          <line x1="281" y1="208" x2="278" y2="208" stroke="#7bb8ff" stroke-width="1" stroke-linecap="round"/>
+          <line x1="281" y1="212" x2="278" y2="212" stroke="#7bb8ff" stroke-width="1" stroke-linecap="round"/>
+          <line x1="299" y1="204" x2="302" y2="204" stroke="#7bb8ff" stroke-width="1" stroke-linecap="round"/>
+          <line x1="299" y1="208" x2="302" y2="208" stroke="#7bb8ff" stroke-width="1" stroke-linecap="round"/>
+          <line x1="299" y1="212" x2="302" y2="212" stroke="#7bb8ff" stroke-width="1" stroke-linecap="round"/>
+          <text x="290" y="237" text-anchor="middle" fill="#8aaad0" font-size="8" font-family="Arial" letter-spacing="0.3">IoT Devices</text>
+        </g>
+
+        <!-- NODO 4 — 5G / Conectividad (izquierda) -->
+        <g class="iot-float2" style="transform-origin:50px 210px">
+          <rect x="34" y="194" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#7bb8ff" stroke-width="1"/>
+          <!-- antena 5G -->
+          <line x1="50" y1="220" x2="50" y2="208" stroke="#7bb8ff" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M44 213 Q50 207 56 213" fill="none" stroke="#4a9eff" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M46 216 Q50 211 54 216" fill="none" stroke="#7bb8ff" stroke-width="1.1" stroke-linecap="round"/>
+          <circle cx="50" cy="221" r="1.8" fill="#4a9eff"/>
+          <text x="50" y="237" text-anchor="middle" fill="#8aaad0" font-size="8" font-family="Arial" letter-spacing="0.3">5G · Network</text>
+        </g>
+
+        <!-- NODO 5 — Satélite (arriba centro) -->
+        <g class="iot-float3" style="transform-origin:170px 22px">
+          <rect x="154" y="6" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#4a9eff" stroke-width="1"/>
+          <!-- satélite icono -->
+          <rect x="163" y="14" width="14" height="10" rx="2" fill="none" stroke="#4a9eff" stroke-width="1.2"/>
+          <line x1="157" y1="16" x2="162" y2="19" stroke="#7bb8ff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="157" y1="20" x2="162" y2="19" stroke="#7bb8ff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="178" y1="19" x2="184" y2="16" stroke="#7bb8ff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="178" y1="19" x2="184" y2="22" stroke="#7bb8ff" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="170" cy="30" r="2" fill="#4a9eff" opacity="0.8"/>
+          <text x="170" y="50" text-anchor="middle" fill="#8aaad0" font-size="8" font-family="Arial" letter-spacing="0.3">Satélite</text>
+        </g>
+
+        <!-- NODO 6 — Blockchain / Seguridad (abajo centro) -->
+        <g class="iot-float" style="transform-origin:170px 278px">
+          <rect x="154" y="262" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#7bb8ff" stroke-width="1"/>
+          <!-- candado icono -->
+          <rect x="162" y="273" width="16" height="13" rx="2" fill="none" stroke="#7bb8ff" stroke-width="1.2"/>
+          <path d="M165 273 Q165 268 170 268 Q175 268 175 273" fill="none" stroke="#4a9eff" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="170" cy="279" r="2" fill="#7bb8ff" opacity="0.8"/>
+          <text x="170" y="306" text-anchor="middle" fill="#8aaad0" font-size="8" font-family="Arial" letter-spacing="0.3">Blockchain</text>
+        </g>
+
+        <!-- NODO 7 — Energía Solar (entre nodo 1 y 5, diagonal superior izquierda) -->
+        <g class="iot-float3" style="transform-origin:88px 108px">
+          <line x1="170" y1="150" x2="104" y2="124" stroke="#EF9F27" stroke-width="0.7" stroke-dasharray="4 4" opacity="0.35" class="iot-dash2"/>
+          <rect x="72" y="92" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#EF9F27" stroke-width="1"/>
+          <!-- Sol icono -->
+          <circle cx="88" cy="108" r="6" fill="none" stroke="#EF9F27" stroke-width="1.4"/>
+          <circle cx="88" cy="108" r="2.5" fill="#EF9F27" opacity="0.7"/>
+          <line x1="88" y1="99" x2="88" y2="97"  stroke="#EF9F27" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="88" y1="117" x2="88" y2="119" stroke="#EF9F27" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="79" y1="108" x2="77" y2="108" stroke="#EF9F27" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="97" y1="108" x2="99" y2="108" stroke="#EF9F27" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="82" y1="101" x2="80" y2="99"  stroke="#EF9F27" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="94" y1="115" x2="96" y2="117" stroke="#EF9F27" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="94" y1="101" x2="96" y2="99"  stroke="#EF9F27" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="82" y1="115" x2="80" y2="117" stroke="#EF9F27" stroke-width="1.1" stroke-linecap="round"/>
+          <text x="88" y="136" text-anchor="middle" fill="#EF9F27" font-size="8" font-family="Arial" letter-spacing="0.3" opacity="0.85">Energía Solar</text>
+        </g>
+
+        <!-- NODO 8 — Movilidad Eléctrica (entre nodo 3 y 6, diagonal inferior derecha) -->
+        <g class="iot-float2" style="transform-origin:252px 192px">
+          <line x1="170" y1="150" x2="236" y2="176" stroke="#5DCAA5" stroke-width="0.7" stroke-dasharray="4 4" opacity="0.35" class="iot-dash3"/>
+          <rect x="236" y="176" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#5DCAA5" stroke-width="1"/>
+          <!-- Auto eléctrico icono -->
+          <rect x="241" y="187" width="22" height="10" rx="3" fill="none" stroke="#5DCAA5" stroke-width="1.2"/>
+          <rect x="244" y="184" width="16" height="5" rx="2" fill="none" stroke="#5DCAA5" stroke-width="1" opacity="0.7"/>
+          <circle cx="245" cy="198" r="2.5" fill="none" stroke="#5DCAA5" stroke-width="1.2"/>
+          <circle cx="259" cy="198" r="2.5" fill="none" stroke="#5DCAA5" stroke-width="1.2"/>
+          <!-- rayo eléctrico -->
+          <path d="M251 188 l-2 4 h3 l-2 4" stroke="#EF9F27" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <text x="252" y="220" text-anchor="middle" fill="#5DCAA5" font-size="8" font-family="Arial" letter-spacing="0.3" opacity="0.85">Movilidad EV</text>
+        </g>
+
+        <!-- NODO 9 — Eólica (entre nodo 4 y 6, diagonal inferior izquierda) -->
+        <g class="iot-float" style="transform-origin:88px 192px">
+          <line x1="170" y1="150" x2="104" y2="176" stroke="#5DCAA5" stroke-width="0.7" stroke-dasharray="4 4" opacity="0.35" class="iot-dash"/>
+          <rect x="72" y="176" width="32" height="32" rx="8" fill="#0d1f3c" stroke="#5DCAA5" stroke-width="1"/>
+          <!-- Turbina eólica icono -->
+          <line x1="88" y1="200" x2="88" y2="185" stroke="#5DCAA5" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="88" cy="185" r="2" fill="#5DCAA5" opacity="0.8"/>
+          <!-- 3 aspas -->
+          <line x1="88" y1="183" x2="84" y2="177" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="88" y1="183" x2="95" y2="178" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="88" y1="185" x2="92" y2="192" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/>
+          <text x="88" y="220" text-anchor="middle" fill="#5DCAA5" font-size="8" font-family="Arial" letter-spacing="0.3" opacity="0.85">Energía Eólica</text>
+        </g>
+
+        <!-- Partículas decorativas flotantes -->
+        <circle cx="130" cy="100" r="1.5" fill="#4a9eff"  opacity="0.5" class="iot-pulse"/>
+        <circle cx="210" cy="100" r="1.2" fill="#7bb8ff"  opacity="0.4" class="iot-pulse2"/>
+        <circle cx="220" cy="200" r="1.5" fill="#4a9eff"  opacity="0.5" class="iot-pulse3"/>
+        <circle cx="120" cy="200" r="1.2" fill="#7bb8ff"  opacity="0.4" class="iot-pulse"/>
+        <circle cx="170" cy="90"  r="1.8" fill="#4a9eff"  opacity="0.3" class="iot-pulse2"/>
+        <circle cx="240" cy="150" r="1.5" fill="#7bb8ff"  opacity="0.4" class="iot-pulse3"/>
+        <circle cx="100" cy="150" r="1.5" fill="#4a9eff"  opacity="0.4" class="iot-pulse"/>
+        <!-- partículas verdes y ámbar -->
+        <circle cx="110" cy="130" r="1.3" fill="#EF9F27"  opacity="0.5" class="iot-pulse2"/>
+        <circle cx="230" cy="170" r="1.3" fill="#5DCAA5"  opacity="0.5" class="iot-pulse3"/>
+        <circle cx="110" cy="170" r="1.3" fill="#5DCAA5"  opacity="0.5" class="iot-pulse"/>
+        <circle cx="145" cy="210" r="1.2" fill="#EF9F27"  opacity="0.4" class="iot-pulse2"/>
+        <circle cx="195" cy="90"  r="1.2" fill="#5DCAA5"  opacity="0.4" class="iot-pulse3"/>
+      </svg>
+    </div>
+
   </div>
 
   <div class="hero-actions">
